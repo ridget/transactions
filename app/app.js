@@ -6,7 +6,9 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 
 var App = Ember.Application.extend({
   modulePrefix: 'transactions', // TODO: loaded via config
-  Resolver: Resolver
+  Resolver: Resolver,
+  LOG_TRANSITIONS: true,
+  LOG_TRANSITIONS_INTERNAL: true
 });
 
 loadInitializers(App, 'transactions');
