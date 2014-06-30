@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Transactions</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/transactions.css">
+  </head>
+  <body>
+    <script>
+      window.TransactionsENV = {{ENV}};
+      window.EmberENV = window.TransactionsENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/transactions.js"></script>
+    <script>
+      window.Transactions = require('transactions/app')['default'].create(TransactionsENV.APP);
+    </script>
+  </body>
+</html>
