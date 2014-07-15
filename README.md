@@ -1,6 +1,7 @@
 # Transactions
 
-This README outlines the details of collaborating on this Ember application.
+A simple Ember Application, based on my blog posts at
+[http://ridget.github.io/blog](http://ridget.github.io/blog)
 
 ## Installation
 
