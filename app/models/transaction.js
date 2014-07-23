@@ -1,8 +1,22 @@
 import DS from 'ember-data';
 var Transaction = DS.Model.extend({
-  name: DS.attr('string'),
-  amount: DS.attr('number'),
-  occurredOn: DS.attr('date')
+    name: DS.attr('string'),
+    amount: DS.attr('number'),
+    occurredOn: DS.attr('date'),
+    dollarValue: function(key, value, previousValue) {
+        var currency;
+        if (value !== undefined) {  // set was called
+            var amount = Math.round(value * 100);
+            currency = accounting.unformat(amount);
+            this.set("amount", currency);
+        } else {
+          currency = this.get('amount');
+        }
+
+        // Get the value and return for either set or get.
+        amount = (currency/100).toFixed(2);
+        return accounting.formatMoney(amount, "");
+    }.property('amount')
 });
 
 Transaction.reopenClass({

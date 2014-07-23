@@ -1,1 +1,9 @@
-{{input}}
+<form {{action "createTransaction" on="submit"}}>
+  <label for="transaction-name">Name:</label>
+  {{input type="text" value=name id="name"}}
+
+  <label for="transaction-amount">Transaction Amount:</label>
+  {{input value=dollarValue id="comp-currency"}}
+
+  <button type="submit">Save Transaction</button>
+</form>

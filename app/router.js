@@ -8,6 +8,7 @@ Router.map(function() {
   this.resource('transactions', { path: '/' }, function(){
     this.route('new');
   });
+  this.route('transactions/new');
 });
 
 export default Router;
