@@ -1,0 +1,8 @@
+{{#link-to 'transactions.new'}}
+  New Transaction
+{{/link-to}}
+<ul>
+  {{#each}}
+    <li>{{name}} {{to-currency amount}} {{occurredOn}}</li>
+  {{/each}}
+</ul>
