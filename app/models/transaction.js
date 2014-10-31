@@ -3,10 +3,10 @@ var Transaction = DS.Model.extend({
     name: DS.attr('string'),
     amount: DS.attr('number'),
     occurredOn: DS.attr('date'),
-    dollarValue: function(key, value, previousValue) {
-        var currency;
+    dollarValue: function(key, value) {
+        var currency, amount;
         if (value !== undefined) {  // set was called
-            var amount = Math.round(value * 100);
+            amount = Math.round(value * 100);
             currency = accounting.unformat(amount);
             this.set("amount", currency);
         } else {
