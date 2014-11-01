@@ -1,8 +1,15 @@
-{{#link-to 'transactions.new'}}
-  New Transaction
-{{/link-to}}
+<form {{action "createTransaction" on="submit"}}>
+  <label for="transaction-name">Name:</label>
+  {{input type="text" value=name id="name"}}
+
+  <label for="transaction-amount">Transaction Amount:</label>
+  {{input value=dollarValue id="comp-currency"}}
+
+  <button type="submit">Save Transaction</button>
+</form>
+
 <ul>
-  {{#each}}
-    <li>{{name}} {{to-currency amount}} {{occurredOn}}</li>
+  {{#each controller}}
+    <li>{{name}} {{to-currency amount}} {{formatted-date occurredOn 'MMMM Do, YYYY [at] h:mm'}}</li>
   {{/each}}
 </ul>

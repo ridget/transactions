@@ -3,9 +3,12 @@ import Ember from "ember";
 var TransactionsIndexController = Ember.ArrayController.extend({
   actions: {
     createTransaction: function(){
-      console.log(this);
-      return false;
-
+      var transaction = this.store.createRecord('transaction', {
+        name: this.get('name'),
+        dollarValue: this.get('dollarValue')
+      });
+      transaction.set('occurredOn', new Date());
+      transaction.save();
     }
   }
 });

@@ -25,7 +25,7 @@ Transaction.reopenClass({
     id: 1,
       name: "GYG Burritos",
       amount: "1200",
-      occurredOn: "12/04/2014" 
+      occurredOn: "2014-11-01T11:59:03+10:00"
   }
 ]});
 

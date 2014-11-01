@@ -5,9 +5,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('transactions', { path: '/' }, function(){
-    this.route('new');
-  });
+  this.resource('transactions', { path: '/' }, function(){});
 });
 
 export default Router;

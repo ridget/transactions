@@ -19,5 +19,6 @@ var app = new EmberApp();
 //
 
 app.import('vendor/accounting/accounting.js');
+app.import('vendor/moment/moment.js');
 
 module.exports = app.toTree();
