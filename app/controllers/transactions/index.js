@@ -1,16 +1,10 @@
 import Ember from "ember";
 
 var TransactionsIndexController = Ember.ArrayController.extend({
-  actions: {
-    createTransaction: function(){
-      var transaction = this.store.createRecord('transaction', {
-        name: this.get('name'),
-        dollarValue: this.get('dollarValue')
-      });
-      transaction.set('occurredOn', new Date());
-      transaction.save();
-    }
-  }
+  categoriesAll: Ember.A(),
+  categoriesSorting: ['name'],
+  categoriesLookup: Ember.computed.sort('categoriesAll', 'categoriesSorting'),
+
 });
 
 export default TransactionsIndexController;
