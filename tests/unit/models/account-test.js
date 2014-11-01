@@ -4,7 +4,7 @@ import { test, moduleForModel } from 'ember-qunit';
 
 moduleForModel('account', 'Account', {
   // Specify the other units that are required for this test.
-  needs: ['model:transaction']
+  needs: ['model:transaction', 'model:category']
 });
 
 test('Account is a valid ember-data model', function(){
@@ -16,7 +16,7 @@ test('Account is a valid ember-data model', function(){
 
 test('transaction relationship', function(){
   var Account = this.store().modelFor('account');
-  var relationship = Ember.get(Account, 'relationshipsByName').get('transaction');
-  equal(relationship.key, 'transaction');
+  var relationship = Ember.get(Account, 'relationshipsByName').get('transactions');
+  equal(relationship.key, 'transactions');
   equal(relationship.kind, 'hasMany');
 });

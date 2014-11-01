@@ -7,6 +7,7 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     this._super(controller, model);
     controller.set('categoriesAll', this.store.find('category'));
+    controller.set('accountsAll', this.store.find('account'));
     controller.set('newTransaction', this.store.createRecord('transaction'));
   },
   actions: {

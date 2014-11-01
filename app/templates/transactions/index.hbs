@@ -8,11 +8,19 @@
   {{view Ember.Select content=categoriesLookup optionValuePath="content.id"
   optionLabelPath="content.name" prompt="Select a Category"
   class="form-control" id="input-categories" selection=newTransaction.category }}
+
+  {{view Ember.Select content=accountsLookup optionValuePath="content.id"
+    optionLabelPath="content.name" prompt="Select an Account"
+    class="form-control" id="input-accounts" selection=newTransaction.account }}
+
   <button type="submit">Save Transaction</button>
 </form>
 
 <ul>
   {{#each controller}}
-    <li>{{name}} {{to-currency amount}} {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}</li>
+    <li>{{name}} {{to-currency amount}}
+    {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
+    {{account.name}}
+    </li>
   {{/each}}
 </ul>
