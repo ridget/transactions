@@ -7,17 +7,15 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     this._super(controller, model);
     controller.set('categoriesAll', this.store.find('category'));
-    controller.set('newTransaction', this.store.find('category'));
+    controller.set('newTransaction', this.store.createRecord('transaction'));
   },
   actions: {
     createTransaction: function(){
-      var unsavedTransaction = this.controller.get('model');
-      var transaction = this.store.createRecord('transaction', {
-        name: unsavedTransaction.get('name'),
-        dollarValue: unsavedTransaction.get('dollarValue')
-      });
+      var transaction = this.controller.get('newTransaction');
       transaction.set('occurredOn', new Date());
-      transaction.save();
+      transaction.save().then(function(){
+        //clear transaction out
+      });
     }
   }
 
