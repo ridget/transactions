@@ -17,10 +17,14 @@
 </form>
 
 <ul>
-  {{#each controller}}
-    <li>{{name}} {{to-currency amount}}
-    {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
-    {{account.name}}
-    </li>
+  {{#each transaction in controller}}
+    {{#unless transaction.isNew }}
+        {{#with transaction}}
+            <li>{{name}} {{to-currency amount}}
+            {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
+            {{account.name}}
+            </li>
+        {{/with}}
+    {{/unless}}
   {{/each}}
 </ul>
