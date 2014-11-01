@@ -1,30 +1,30 @@
 <form {{action "createTransaction" on="submit"}}>
-  <label for="transaction-name">Name:</label>
-  {{input type="text" value=newTransaction.name id="name"}}
+    <label for="transaction-name">Name:</label>
+    {{input type="text" value=newTransaction.name id="name"}}
 
-  <label for="transaction-amount">Amount:</label>
-  {{input value=newTransaction.dollarValue id="comp-currency"}}
+    <label for="transaction-amount">Amount:</label>
+    {{input value=newTransaction.dollarValue id="comp-currency"}}
 
-  {{view Ember.Select content=categoriesLookup optionValuePath="content.id"
-  optionLabelPath="content.name" prompt="Select a Category"
-  class="form-control" id="input-categories" selection=newTransaction.category }}
+    {{view Ember.Select content=categoriesLookup optionValuePath="content.id"
+    optionLabelPath="content.name" prompt="Select a Category"
+    class="form-control" id="input-categories" selection=newTransaction.category }}
 
-  {{view Ember.Select content=accountsLookup optionValuePath="content.id"
+    {{view Ember.Select content=accountsLookup optionValuePath="content.id"
     optionLabelPath="content.name" prompt="Select an Account"
     class="form-control" id="input-accounts" selection=newTransaction.account }}
 
-  <button type="submit">Save Transaction</button>
+    <button type="submit">Save Transaction</button>
 </form>
 
 <ul>
-  {{#each transaction in controller}}
-    {{#unless transaction.isNew }}
+    {{#each transaction in controller}}
         {{#with transaction}}
-            <li>{{name}} {{to-currency amount}}
-            {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
-            {{account.name}}
-            </li>
+            {{#unless isNew }}
+                <li>{{name}} {{to-currency amount}}
+                    {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
+                    {{account.name}}
+                </li>
+            {{/unless}}
         {{/with}}
-    {{/unless}}
-  {{/each}}
+    {{/each}}
 </ul>
