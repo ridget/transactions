@@ -3,6 +3,7 @@ var Transaction = DS.Model.extend({
     name: DS.attr('string'),
     amount: DS.attr('number'),
     occurredOn: DS.attr('date'),
+    category: DS.belongsTo('category'),
     dollarValue: function(key, value) {
         var currency, amount;
         if (value !== undefined) {  // set was called
