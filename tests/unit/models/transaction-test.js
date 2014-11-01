@@ -3,7 +3,7 @@ import Ember from 'ember';
 import { test, moduleForModel } from 'ember-qunit';
 
 moduleForModel('transaction', 'Transaction Model', {
-  needs: ['model:category'],
+  needs: ['model:category', 'model:account'],
 });
 
 test('Transaction is a valid ember-data model', function(){
@@ -17,6 +17,13 @@ test('category relationship', function(){
   var Transaction = this.store().modelFor('transaction');
   var relationship = Ember.get(Transaction, 'relationshipsByName').get('category');
   equal(relationship.key, 'category');
+  equal(relationship.kind, 'belongsTo');
+});
+
+test('account relationship', function(){
+  var Transaction = this.store().modelFor('transaction');
+  var relationship = Ember.get(Transaction, 'relationshipsByName').get('account');
+  equal(relationship.key, 'account');
   equal(relationship.kind, 'belongsTo');
 });
 

@@ -3,7 +3,7 @@ import Ember from 'ember';
 import { test, moduleFor } from 'ember-qunit';
 
 moduleFor('controller:transactions/index', 'Transaction Index Controller', {
-  needs: ['model:category'],
+  needs: ['model:category']
 });
 
 test('categoriesLookup sorts by name', function(){
