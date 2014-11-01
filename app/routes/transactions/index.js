@@ -11,10 +11,12 @@ export default Ember.Route.extend({
   },
   actions: {
     createTransaction: function(){
-      var transaction = this.controller.get('newTransaction');
+      var self = this;
+      var controller = this.controller;
+      var transaction = controller.get('newTransaction');
       transaction.set('occurredOn', new Date());
       transaction.save().then(function(){
-        //clear transaction out
+        controller.set('newTransaction', self.store.createRecord('transaction'));
       });
     }
   }
