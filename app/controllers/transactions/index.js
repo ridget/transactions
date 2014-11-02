@@ -12,8 +12,8 @@ var TransactionsIndexController = Ember.ArrayController.extend({
       return round.get('amount') > 0;
     });
     return array.mapProperty('amount').reduce(
-        function(previousValue, item, index, array){
-          return previousValue + currentValue;
+        function(previousValue, item){
+          return previousValue + item;
         }
     );
   }.property('@each'),
