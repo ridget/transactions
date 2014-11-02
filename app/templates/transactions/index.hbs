@@ -1,18 +1,19 @@
 <form {{action "createTransaction" on="submit"}}>
-    <label for="transaction-name">Name:</label>
-    {{input type="text" value=newTransaction.name id="name"}}
-
-    <label for="transaction-amount">Amount:</label>
-    {{input value=newTransaction.dollarValue id="comp-currency"}}
-
-    {{view Ember.Select content=categoriesLookup optionValuePath="content.id"
-    optionLabelPath="content.name" prompt="Select a Category"
-    class="form-control" id="input-categories" selection=newTransaction.category }}
-
-    {{view Ember.Select content=accountsLookup optionValuePath="content.id"
-    optionLabelPath="content.name" prompt="Select an Account"
-    class="form-control" id="input-accounts" selection=newTransaction.account }}
-
+    {{#with newTransaction as transaction}}
+        <label for="transaction-name">Name:</label>
+        {{input type="text" value=transaction.name id="name"}}
+    
+        <label for="transaction-amount">Amount:</label>
+        {{input value=transaction.dollarValue id="comp-currency"}}
+    
+        {{view Ember.Select content=categoriesLookup optionValuePath="content.id"
+        optionLabelPath="content.name" prompt="Select a Category"
+        class="form-control" id="input-categories" selection=transaction.category }}
+    
+        {{view Ember.Select content=accountsLookup optionValuePath="content.id"
+        optionLabelPath="content.name" prompt="Select an Account"
+        class="form-control" id="input-accounts" selection=transaction.account }}
+    {{/with}}
     <button type="submit">Save Transaction</button>
 </form>
 
@@ -20,13 +21,17 @@
     {{#each transaction in controller}}
         {{#with transaction}}
             {{#unless isNew }}
-                <li>{{name}} {{to-currency dollarValue}}
+                <li>
+                {{#if isEditing}}
+                {{else}}
+                    {{name}} {{to-currency dollarValue}}
                     {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
                     {{account.name}}
+                {{/if}}
                 </li>
             {{/unless}}
         {{/with}}
     {{/each}}
-    Total Expenses: {{to-currency expenditureTotalDollarAmount}}
+    Total Expenses: {{expenditureTotalDollarAmount}}
 </ul>
 
