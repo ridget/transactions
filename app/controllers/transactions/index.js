@@ -7,13 +7,16 @@ var TransactionsIndexController = Ember.ArrayController.extend({
   categoriesAll: Ember.A(),
   categoriesSorting: ['name'],
   categoriesLookup: Ember.computed.sort('categoriesAll', 'categoriesSorting'),
-  transactionAmountsAll: function() {
+  expenditureTotal: function() {
     var array = this.filter(function(round){
       return round.get('amount') > 0;
     });
-    return array.mapProperty('amount');
+    return array.mapProperty('amount').reduce(
+        function(previousValue, item, index, array){
+          return previousValue + currentValue;
+        }
+    );
   }.property('@each'),
-  expenditureTotal: Ember.computed.sum('transactionAmountsAll'),
   expenditureTotalDollarAmount: function(){
     var amount = (this.get('expenditureTotal').toFixed(2))/100;
     return accounting.formatMoney(amount, "");
