@@ -11,7 +11,6 @@ var TransactionsIndexController = Ember.ArrayController.extend({
     var array = this.filter(function(round){
       return round.get('amount') > 0;
     });
-    console.log(array.mapProperty('amount'));
     return array.mapProperty('amount');
   }.property('@each'),
   expenditureTotal: Ember.computed.sum('transactionAmountsAll'),
