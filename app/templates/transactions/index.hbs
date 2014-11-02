@@ -20,11 +20,13 @@
     {{#each transaction in controller}}
         {{#with transaction}}
             {{#unless isNew }}
-                <li>{{name}} {{to-currency amount}}
+                <li>{{name}} {{to-currency dollarValue}}
                     {{formatted-date occurredOn 'MMMM Do, YYYY'}} {{category.name}}
                     {{account.name}}
                 </li>
             {{/unless}}
         {{/with}}
     {{/each}}
+    Total Expenses: {{to-currency expenditureTotalDollarAmount}}
 </ul>
+
